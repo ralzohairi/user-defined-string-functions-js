@@ -1,0 +1,13 @@
+body {
+    background-color: lightblue;
+    /*targeting Chrome & Safari*/
+    display: -webkit-flex;
+    /*targeting IE10*/
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*vertical centering*/
+    height: 100vh;
+    text-align: center;
+}
