@@ -116,7 +116,87 @@ console.log("should return false when checking if [\'bird\'] is included in the 
 );
 
 // ----------- hasAnArabicCharacter() Unit Tests -----------
-//TODO:
+
+console.log("should return true when passing text that has at least one Arabic character to the hasAnArabicCharacter function: ",
+    hasAnArabicCharacter("أ") &&
+        hasAnArabicCharacter("آ") &&
+        hasAnArabicCharacter("ا") &&
+        hasAnArabicCharacter("إ") &&
+        hasAnArabicCharacter("ب") &&
+        hasAnArabicCharacter("ت") &&
+        hasAnArabicCharacter("ث") &&
+        hasAnArabicCharacter("ج") &&
+        hasAnArabicCharacter("ح") &&
+        hasAnArabicCharacter("خ") &&
+        hasAnArabicCharacter("د") &&
+        hasAnArabicCharacter("ذ") &&
+        hasAnArabicCharacter("ر") &&
+        hasAnArabicCharacter("ذ") &&
+        hasAnArabicCharacter("س") &&
+        hasAnArabicCharacter("ش") &&
+        hasAnArabicCharacter("ص") &&
+        hasAnArabicCharacter("ض") &&
+        hasAnArabicCharacter("ط") &&
+        hasAnArabicCharacter("ظ") &&
+        hasAnArabicCharacter("ع") &&
+        hasAnArabicCharacter("غ") &&
+        hasAnArabicCharacter("ف") &&
+        hasAnArabicCharacter("ق") &&
+        hasAnArabicCharacter("ك") &&
+        hasAnArabicCharacter("ل") &&
+        hasAnArabicCharacter("م") &&
+        hasAnArabicCharacter("ن") &&
+        hasAnArabicCharacter("ه") &&
+        hasAnArabicCharacter("و") &&
+        hasAnArabicCharacter("ي") &&
+        hasAnArabicCharacter("ى") &&
+        hasAnArabicCharacter("ئ") &&
+        hasAnArabicCharacter("ء") &&
+        hasAnArabicCharacter("ة") &&
+        hasAnArabicCharacter("ؤ") &&
+        // Arabic symbols
+        hasAnArabicCharacter("ّ") &&
+        hasAnArabicCharacter("َ") &&
+        hasAnArabicCharacter("ً") &&
+        hasAnArabicCharacter("ِ") &&
+        hasAnArabicCharacter("ٍ") &&
+        hasAnArabicCharacter("ُ") &&
+        hasAnArabicCharacter("ٌ") &&
+        hasAnArabicCharacter("ْ") &&
+        // Arabic numbers
+        hasAnArabicCharacter("١") &&
+        hasAnArabicCharacter("٢") &&
+        hasAnArabicCharacter("٣") &&
+        hasAnArabicCharacter("٤") &&
+        hasAnArabicCharacter("٥") &&
+        hasAnArabicCharacter("٦") &&
+        hasAnArabicCharacter("٧") &&
+        hasAnArabicCharacter("٨") &&
+        hasAnArabicCharacter("٩") &&
+        hasAnArabicCharacter("١٠") &&
+        // Arabic punctuation
+        hasAnArabicCharacter("؟") &&
+        hasAnArabicCharacter("،") &&
+        // A string with at least one Arabic character
+        hasAnArabicCharacter("aأ") &&
+        hasAnArabicCharacter("Zأ") &&
+        hasAnArabicCharacter("0أ") &&
+        hasAnArabicCharacter("9أ") &&
+        hasAnArabicCharacter("9،") &&
+        hasAnArabicCharacter("aZأ") ? "success" : "failed"
+);
+
+console.log("should return false when passing text that has no Arabic character to the hasAnArabicCharacter function: ",
+    // Strings with not a single arabic character
+    hasAnArabicCharacter("a") &&
+        hasAnArabicCharacter("Z") &&
+        hasAnArabicCharacter("0") &&
+        hasAnArabicCharacter("9") &&
+        hasAnArabicCharacter("?") &&
+        hasAnArabicCharacter("!") &&
+        hasAnArabicCharacter(".") &&
+        hasAnArabicCharacter(",") ? "failed" : "success"
+);
 
 // ----------- getHttpsVersionOfURL() Unit Tests -----------
 
