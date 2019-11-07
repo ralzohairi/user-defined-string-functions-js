@@ -241,25 +241,23 @@ console.log("should escape the regular expression \'.*+?^${}()\\ \\\\ \' and ret
     escapeSpecialCharactersOfRegExpInAString('.*+?^${}()\\ \\\\ \'') === '\\.\\*\\+\\?\\^\\$\\{\\}\\(\\)\\\\ \\\\\\\\ \'' ? "success" : "failed"
 );
 
-// TODO:
+// ----------- replaceSpecialCharactersWithUnderscore() Unit Tests -----------
+console.log("should replace all special characters '\\s\\n\"'<>&' to undersocre when passing '     \n\n\"'<>&' to replaceSpecialCharactersWithUnderscore: ",
+    replaceSpecialCharactersWithUnderscore("     \n\n\"'<>&") === "____________" ? "success" : "failed"
+);
 
-//   // ----------- replaceSpecialCharactersWithUnderscore() Unit Tests -----------
-//   it("should replace all special characters '\\s\\n\"'<>&' to undersocre when passing '     \n\n\"'<>&' to replaceSpecialCharactersWithUnderscore", () => {
-//     expect(stringHandlingService.replaceSpecialCharactersWithUnderscore("     \n\n\"'<>&")).toBe("____________");
-//   });
+console.log("should replace all extra forbidden characters to underscore when passing ' \n'\"<>&!@#$%^*|(),?:{}[]' to replaceSpecialCharactersWithUnderscore: ",
+    replaceSpecialCharactersWithUnderscore(" \n'\"<>&!@#$%^*|(),?:{}[]") === "________________________" ? "success" : "failed"
+);
 
-//   it("should replace all extra forbidden characters to underscore when passing ' \n'\"<>&!@#$%^*|(),?:{}[]' to replaceSpecialCharactersWithUnderscore", () => {
-//     expect(stringHandlingService.replaceSpecialCharactersWithUnderscore(" \n'\"<>&!@#$%^*|(),?:{}[]")).toBe("________________________");
-//   });
+console.log("should replace non valid URL chars & forbidden characters with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceSpecialCharactersWithUnderscore: ",
+    replaceSpecialCharactersWithUnderscore
+        ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^") === "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~_/____________+_;=____" ?
+        "success" : "failed"
+);
 
-//   it("should replace non valid URL chars & forbidden characters with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceSpecialCharactersWithUnderscore", () => {
-//     expect(stringHandlingService.replaceSpecialCharactersWithUnderscore
-//       ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^"))
-//       .toBe("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~_/____________+_;=____");
-//   });
-
-//   // ----------- replaceNonValidURLCharsWithSymbol() Unit Tests -----------
-//   it("should replace non valid URL chars with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceNonValidURLCharsWithSymbol", () => {
-//     expect(stringHandlingService.replaceNonValidURLCharsWithSymbol("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^", "_"))
-//       .toBe("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=____");
-//   });
+// ----------- replaceNonValidURLCharsWithSymbol() Unit Tests -----------
+console.log("should replace non valid URL chars with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceNonValidURLCharsWithSymbol: ",
+    replaceNonValidURLCharsWithSymbol("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^", "_") === "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=____" ?
+        "success" : "failed"
+);
