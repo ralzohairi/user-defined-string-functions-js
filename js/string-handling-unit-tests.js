@@ -103,16 +103,26 @@ console.log("should return an empty string when passing a string of whitespace t
     extractPathFromURL("    ") === "" ? "success" : "failed"
 );
 
-// ----------- includes() Unit Tests -----------
+// ----------- isIncludedInString() Unit Tests -----------
+
+console.log("should return true when checking if 'Pacific' is included in the string 'The Pacific Ocean': ",
+    isIncludedInString("The Pacific Ocean", "Pacific") ? "success" : "failed"
+);
+
+console.log("should return false when checking if 'Pacific' is included in the string 'The Indian Ocean': ",
+    !isIncludedInString("The Indian Ocean", "Pacific") ? "success" : "failed"
+);
+
+// ----------- isIncludedInStringList() Unit Tests -----------
 
 const animals = ['cat', 'dog'];
 
 console.log("should return true when checking if [\'cat\'] is included in the string list [\'cat\', \'dog\']: ",
-    includes(animals, 'cat') ? "success" : "failed"
+    isIncludedInStringList(animals, 'cat') ? "success" : "failed"
 );
 
 console.log("should return false when checking if [\'bird\'] is included in the string list [\'cat\', \'dog\']: ",
-    includes(animals, 'bird') ? "failed" : "success"
+    isIncludedInStringList(animals, 'bird') ? "failed" : "success"
 );
 
 // ----------- hasAnArabicCharacter() Unit Tests -----------
