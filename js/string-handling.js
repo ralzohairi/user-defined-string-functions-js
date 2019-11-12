@@ -201,6 +201,8 @@ function hasAnArabicCharacter(text) {
  */
 function getHttpsVersionOfURL(url) {
     if (!this.isWhiteSpaceOnly(url)) {
+        url = url.toLowerCase();
+
         // CASE 1: If the url doesn't have a protocol or have a different protocol than HTTP/HTTPS
         if (!isIncludedInString(url, "http")) { // Note: not  using the built in function includes() as it's not supported in IE
             return url;

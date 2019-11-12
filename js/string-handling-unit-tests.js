@@ -214,12 +214,24 @@ console.log("should return 'https://github.com/' when passing 'http://github.com
     getHttpsVersionOfURL("http://github.com/") === "https://github.com/" ? "success" : "failed"
 );
 
+console.log("should return 'https://github.com/' when passing 'hTtP://GITHUB.com/' to the getHttpsVersionOfURL function: ",
+    getHttpsVersionOfURL("hTtP://GITHUB.com/") === "https://github.com/" ? "success" : "failed"
+);
+
 console.log("should return 'https://github.com/' when passing 'https://github.com/' to the getHttpsVersionOfURL function: ",
     getHttpsVersionOfURL("https://github.com/") === "https://github.com/" ? "success" : "failed"
 );
 
+console.log("should return 'https://github.com/' when passing 'HTTPS://GITHUB.com/' to the getHttpsVersionOfURL function: ",
+    getHttpsVersionOfURL("HTTPS://GITHUB.com/") === "https://github.com/" ? "success" : "failed"
+);
+
 console.log("should return 'github.com/' when passing 'github.com/' to the getHttpsVersionOfURL function (no protocol case): ",
     getHttpsVersionOfURL("github.com/") === "github.com/" ? "success" : "failed"
+);
+
+console.log("should return 'github.com/' when passing 'GITHUB.com/' to the getHttpsVersionOfURL function (no protocol case): ",
+    getHttpsVersionOfURL("GITHUB.com/") === "github.com/" ? "success" : "failed"
 );
 
 console.log("should return an empty string when passing only whitespace to the getHttpsVersionOfURL function: ",
