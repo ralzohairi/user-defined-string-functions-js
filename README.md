@@ -1,2 +1,2 @@
-# string-functions-js
-This project provides JavaScript functions for handling and manipulting strings.
+# User-defined JavaScript String Functions
+This project provides user-defined JavaScript functions for handling and manipulating strings.
