@@ -256,6 +256,12 @@ console.log("should replace non valid URL chars & forbidden characters with unde
         "success" : "failed"
 );
 
+console.log("should return string as is when it has no invalid URL chars and no forbidden characters to replaceSpecialCharactersWithUnderscore: ",
+    replaceSpecialCharactersWithUnderscore("ab") === "ab" &&
+    replaceSpecialCharactersWithUnderscore("") === ""?
+        "success" : "failed"
+);
+
 // ----------- replaceNonValidURLCharsWithSymbol() Unit Tests -----------
 console.log("should replace non valid URL chars with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceNonValidURLCharsWithSymbol: ",
     replaceNonValidURLCharsWithSymbol("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^", "_") === "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=____" ?
