@@ -301,5 +301,6 @@ function replaceNonValidURLCharsWithSymbol(text, symbol) {
     return text.replace(/[^a-zA-Z0-9-\._~\:\/\?#\[\]\@\!\$\&'\(\)\*\+\,\;\=]/g, symbol);
 
     // ^ in a char set: A negated or complemented character set. That is, it matches anything that is not enclosed in the brackets
-    // None valid char list: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=
+    // None valid char list is anything that is not from the following list:
+    // ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=
 }

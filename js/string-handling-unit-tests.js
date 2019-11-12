@@ -1,11 +1,15 @@
 // ----------- isWhiteSpaceOnly Unit Tests -----------
 
 console.log("should return false when passing a string that is not white space only & checking if its white space only: ",
-    isWhiteSpaceOnly('hello everybody!') ? "failed" : "success"
+    !isWhiteSpaceOnly('hello everybody!')
+        &&
+        !isWhiteSpaceOnly(' Hello World ')
+        ? "success" : "failed"
 );
 
 console.log("should return true when passing a string that is white space only & checking if its white space only: ",
-    isWhiteSpaceOnly('       ') ? "success" : "failed"
+    isWhiteSpaceOnly('       ') &&
+        isWhiteSpaceOnly(' ') ? "success" : "failed"
 );
 
 // ----------- isPrefix() Unit Tests -----------
@@ -14,8 +18,8 @@ console.log("should return true when passing the text '\"image/png\"' with a pos
     isPrefix("image/png", "image/") ? "success" : "failed"
 );
 
-console.log("should return false when passing the text '\"document/image/png\"' with a possible prefix as '\"image/\"' to the isPrefix function: ",
-    isPrefix("document/image/png", "image/") ? "failed" : "success"
+console.log("should return false when passing the text '\"xxx/image/png\"' with a possible prefix as '\"image/\"' to the isPrefix function: ",
+    isPrefix("xxx/image/png", "image/") ? "failed" : "success"
 );
 
 console.log("should return true when passing the text '\"https\\x\\x\"' with a possible prefix as '\"https/\"' to the isPrefix function: ",
@@ -33,7 +37,9 @@ console.log("should return false when passing the text \"image/png\" with a poss
 // ----------- getFirstWord() Unit Tests -----------
 
 console.log("should return first word of string when requesting first word and passing a non-empty string: ",
-    getFirstWord('   Ahmed    Saleh Algamdi') === ('Ahmed') ? "success" : "failed"
+    getFirstWord('   Ahmed    Saleh Algamdi') === ('Ahmed') &&
+        getFirstWord(' Muhammad Ali ') === ('Muhammad')
+        ? "success" : "failed"
 );
 
 console.log("should return empty string when requesting first word but passing an empty string: ",
@@ -43,7 +49,10 @@ console.log("should return empty string when requesting first word but passing a
 // ----------- getFirstAndLastWord() Unit Tests -----------
 
 console.log("should return first and last of string when requesting first word and last word and passing a non-empty string",
-    getFirstAndLastWord('   Ahmed    Saleh Aymen Raed Algamdi') === 'Ahmed Algamdi' ? "success" : "failed"
+    getFirstAndLastWord('   Ahmed    Saleh Aymen Raed Algamdi') === 'Ahmed Algamdi'
+        &&
+        getFirstAndLastWord(' Nelson Rolihlahla Mandela ') === 'Nelson Mandela'
+        ? "success" : "failed"
 );
 
 console.log("should return empty string when requesting first word and last word but passing an empty string: ",
@@ -54,6 +63,10 @@ console.log("should return empty string when requesting first word and last word
 
 console.log("should return '\"file.name-file.name\"' when passing '\"file.name-file.name.png\"' to the removeFileNameExtension from filename: ",
     removeFileNameExtension("file.name-file.name.png") === "file.name-file.name" ? "success" : "failed"
+);
+
+console.log("should return \"my_cv\" when passing \"my_cv.pdf\" to the removeFileNameExtension from filename: ",
+    removeFileNameExtension("my_cv.pdf") === "my_cv" ? "success" : "failed"
 );
 
 console.log("should return '\"file.name-file.name\"' when passing '\"file.name-file.name\"' to the removeFileNameExtension from filename: ",
@@ -197,19 +210,21 @@ console.log("should return true when passing text that has at least one Arabic c
         hasAnArabicCharacter("0أ") &&
         hasAnArabicCharacter("9أ") &&
         hasAnArabicCharacter("9،") &&
-        hasAnArabicCharacter("aZأ") ? "success" : "failed"
+        hasAnArabicCharacter("aZأ") &&
+        hasAnArabicCharacter("language: العربية")
+        ? "success" : "failed"
 );
 
 console.log("should return false when passing text that has no Arabic character to the hasAnArabicCharacter function: ",
     // Strings with not a single arabic character
-    hasAnArabicCharacter("a") &&
-        hasAnArabicCharacter("Z") &&
-        hasAnArabicCharacter("0") &&
-        hasAnArabicCharacter("9") &&
-        hasAnArabicCharacter("?") &&
-        hasAnArabicCharacter("!") &&
-        hasAnArabicCharacter(".") &&
-        hasAnArabicCharacter(",") ? "failed" : "success"
+    !hasAnArabicCharacter("a") &&
+        !hasAnArabicCharacter("Z") &&
+        !hasAnArabicCharacter("0") &&
+        !hasAnArabicCharacter("9") &&
+        !hasAnArabicCharacter("?") &&
+        !hasAnArabicCharacter("!") &&
+        !hasAnArabicCharacter(".") &&
+        !hasAnArabicCharacter(",") ? "success" : "failed"
 );
 
 // ----------- getHttpsVersionOfURL() Unit Tests -----------
@@ -244,15 +259,20 @@ console.log("should return an empty string when passing only whitespace to the g
 
 // ----------- concatListAndSeparateBySymbol() Unit Tests -----------
 
-const listOfCars = ['Toyota', 'GMC', 'BMW'];
+const listOfCars = ["You", "Daniel", "John"];
 console.log("should return passed string list in the format \'string1, string2, ..., stringn\'': ",
-    concatListAndSeparateBySymbol(listOfCars, ", ") === 'Toyota, GMC, BMW' ? "success" : "failed"
+    concatListAndSeparateBySymbol(listOfCars, ", ") === 'You, Daniel, John' ? "success" : "failed"
 );
 
 // ----------- replaceEscapedXMLCharactersWithNonEscapedCharacters() Unit Tests -----------
 
 console.log("should return '\"The ocean's blue < & > \"' when passing '&quot; The ocean&apos;s blue &lt; &amp; &gt; &quot;': ",
     replaceEscapedXMLCharactersWithNonEscapedCharacters("&quot; The ocean&apos;s blue &lt; &amp; &gt; &quot;") === "\" The ocean's blue < & > \"" ?
+        "success" : "failed"
+);
+
+console.log("should return 'Bath & Body Works' when passing 'Bath &quot; Body Works': ",
+    replaceEscapedXMLCharactersWithNonEscapedCharacters("Bath &amp; Body Works") === "Bath & Body Works" ?
         "success" : "failed"
 );
 
@@ -267,9 +287,17 @@ console.log("should escape the regular expression \'.*+?^${}()\\ \\\\ \' and ret
     escapeSpecialCharactersOfRegExpInAString('.*+?^${}()\\ \\\\ \'') === '\\.\\*\\+\\?\\^\\$\\{\\}\\(\\)\\\\ \\\\\\\\ \'' ? "success" : "failed"
 );
 
+console.log("should escape the regular expression 'How are you?' and return 'How are you\\?': ",
+    escapeSpecialCharactersOfRegExpInAString("How are you?") === 'How are you\\?' ? "success" : "failed"
+);
+
 // ----------- replaceSpecialCharactersWithUnderscore() Unit Tests -----------
 console.log("should replace all special characters '\\s\\n\"'<>&' to undersocre when passing '     \n\n\"'<>&' to replaceSpecialCharactersWithUnderscore: ",
     replaceSpecialCharactersWithUnderscore("     \n\n\"'<>&") === "____________" ? "success" : "failed"
+);
+
+console.log("should replace all special characters to underscore when passing ' my<>cv.pdf' to replaceSpecialCharactersWithUnderscore: ",
+    replaceSpecialCharactersWithUnderscore(" my<>cv.pdf") === "_my__cv.pdf" ? "success" : "failed"
 );
 
 console.log("should replace all extra forbidden characters to underscore when passing ' \n'\"<>&!@#$%^*|(),?:{}[]' to replaceSpecialCharactersWithUnderscore: ",
@@ -291,5 +319,10 @@ console.log("should return string as is when it has no invalid URL chars and no 
 // ----------- replaceNonValidURLCharsWithSymbol() Unit Tests -----------
 console.log("should replace non valid URL chars with underscore when passing 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^' to replaceNonValidURLCharsWithSymbol: ",
     replaceNonValidURLCharsWithSymbol("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;={}|^", "_") === "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=____" ?
+        "success" : "failed"
+);
+
+console.log("should replace non valid URL chars with underscore when passing ' project|1.pdf' to replaceNonValidURLCharsWithSymbol: ",
+    replaceNonValidURLCharsWithSymbol(" project|1.pdf", "_") === "_project_1.pdf" ?
         "success" : "failed"
 );
