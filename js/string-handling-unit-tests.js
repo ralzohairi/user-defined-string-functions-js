@@ -26,6 +26,10 @@ console.log("should return false when passing the text '\"http\\x\\x\"' with a p
     isPrefix("  http\\x\\x", "https") ? "failed" : "success"
 );
 
+console.log("should return false when passing the text \"image/png\" with a possible prefix as '\"IMAGE/\"' to the isPrefix function as it's case sensitive: ",
+    isPrefix("image/png", "IMAGE/") ? "failed" : "success"
+);
+
 // ----------- getFirstWord() Unit Tests -----------
 
 console.log("should return first word of string when requesting first word and passing a non-empty string: ",
