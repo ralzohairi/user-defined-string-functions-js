@@ -29,7 +29,7 @@ function isPrefix(text, possiblePrefix) {
     }
 
     // Otherwise, test if it contains the possible prefix
-    return text.indexOf(possiblePrefix) !== -1 && text.substring(0, possiblePrefix.length) === possiblePrefix;
+    return isIncludedInString(text, possiblePrefix) && text.substring(0, possiblePrefix.length) === possiblePrefix;
 
     // Note using the built in function includes as it's not supported in IE.
 }
@@ -202,7 +202,7 @@ function hasAnArabicCharacter(text) {
 function getHttpsVersionOfURL(url) {
     if (!this.isWhiteSpaceOnly(url)) {
         // CASE 1: If the url doesn't have a protocol or have a different protocol than HTTP/HTTPS
-        if (url.indexOf("http") === -1) { // Note: not  using the built in function includes() as it's not supported in IE
+        if (!isIncludedInString(url, "http")) { // Note: not  using the built in function includes() as it's not supported in IE
             return url;
         }
         // CASE 2: If the protocol contains an HTTP/HTTPS protocol
