@@ -216,11 +216,11 @@ console.log("should return an empty string when passing only whitespace to the g
     getHttpsVersionOfURL("     ") === "" ? "success" : "failed"
 );
 
-// ----------- concatListAndSeparateByCommas() Unit Tests -----------
+// ----------- concatListAndSeparateBySymbol() Unit Tests -----------
 
 const listOfCars = ['Toyota', 'GMC', 'BMW'];
 console.log("should return passed string list in the format \'string1, string2, ..., stringn\'': ",
-    concatListAndSeparateByCommas(listOfCars) === 'Toyota, GMC, BMW' ? "success" : "failed"
+    concatListAndSeparateBySymbol(listOfCars, ", ") === 'Toyota, GMC, BMW' ? "success" : "failed"
 );
 
 // ----------- replaceEscapedXMLCharactersWithNonEscapedCharacters() Unit Tests -----------
@@ -258,7 +258,7 @@ console.log("should replace non valid URL chars & forbidden characters with unde
 
 console.log("should return string as is when it has no invalid URL chars and no forbidden characters to replaceSpecialCharactersWithUnderscore: ",
     replaceSpecialCharactersWithUnderscore("ab") === "ab" &&
-    replaceSpecialCharactersWithUnderscore("") === ""?
+        replaceSpecialCharactersWithUnderscore("") === "" ?
         "success" : "failed"
 );
 
