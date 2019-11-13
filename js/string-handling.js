@@ -1,13 +1,15 @@
-// .:: User defined String functions implemented by ralzohairi ::.
+// .:: User defined String functions implemented by @ralzohairi ::.
 
 /** Determines if passed string contains white space only
    * @param {String} text - string to test
-   * @returns {Boolean} true if passed string contains white space only and false otherwise
+   * @returns {Boolean} true if passed string contains white space only and false
+   *  otherwise
    */
 function isWhiteSpaceOnly(text) {
 
     // Replace all existing white space in string with an empty string
-    const noWhiteSpaceInput = text.replace(/\s/g, ""); // Note: g is for global match (to not stop at first match)
+    const noWhiteSpaceInput = text.replace(/\s/g, ""); // Note: g is for global match
+    // (to not stop at first match)
 
     if (noWhiteSpaceInput === "") {
         return true;
@@ -16,7 +18,8 @@ function isWhiteSpaceOnly(text) {
     }
 }
 
-/** Determines if the first passed string contains the second passed string as a prefix
+/** Determines if the first passed string contains the second passed string as a
+ *  prefix
  * @param {String} text - the string to check it's prefix
  * @param {String} possiblePrefix - the possible prefix of text
  * @returns {Boolean} true if the first passed string contains the second passed
@@ -29,7 +32,8 @@ function isPrefix(text, possiblePrefix) {
     }
 
     // Otherwise, test if it contains the possible prefix
-    return isIncludedInString(text, possiblePrefix) && text.substring(0, possiblePrefix.length) === possiblePrefix;
+    return isIncludedInString(text, possiblePrefix) &&
+        text.substring(0, possiblePrefix.length) === possiblePrefix;
 
     // Note using the built in function includes as it's not supported in IE.
 }
@@ -43,8 +47,8 @@ function getFirstWord(text) {
 
     if (!this.isWhiteSpaceOnly(text)) {
         // create a list of all words in text using any white space as a breaking point
-        const stringBrokenIntoArray = text.match(/\S+/g); /* '\S: matching anything except a whitespace
-      (newline, tab, space) - "\S" is the negation of \s*/
+        const stringBrokenIntoArray = text.match(/\S+/g); /* '\S: matching anything
+         except a whitespace (newline, tab, space) - "\S" is the negation of \s*/
 
         // extract first word in text
         return stringBrokenIntoArray[0];
@@ -55,21 +59,24 @@ function getFirstWord(text) {
 
 /** Returns the first and last word in a string
  * @param {String} text - string to test
- * @returns {String} the first and last word of the string, if string is not white space only.
- *  Otherwise, returns an empty string. However, If the string has only one word,
- * the output will be the first word only.
+ * @returns {String} the first and last word of the string, if string is not white 
+ * space only. Otherwise, returns an empty string. However, If the string has only
+ *  one word, the output will be the first word only.
  */
 function getFirstAndLastWord(text) {
     if (!this.isWhiteSpaceOnly(text)) {
         // create a list of all words in text using any white space as a breaking point
-        const stringBrokenIntoArray = text.match(/\S+/g); /* '\S: matching anything except a whitespace
-      (newline, tab, space) - is the negation of \s*/
+        const stringBrokenIntoArray = text.match(/\S+/g); /* '\S: matching anything
+        except a whitespace (newline, tab, space) - is the negation of \s*/
 
         let stringToReturn = stringBrokenIntoArray[0];
 
-        // if string contains more than one word, append the last word to the string to return
+        // if string contains more than one word, append the last word to the
+        // string to return
         if (stringBrokenIntoArray.length > 1) {
-            stringToReturn = stringToReturn + " " + stringBrokenIntoArray[stringBrokenIntoArray.length - 1];
+            stringToReturn = stringToReturn
+                + " "
+                + stringBrokenIntoArray[stringBrokenIntoArray.length - 1];
         }
 
         // extract first and last word only
@@ -96,8 +103,9 @@ function removeFileNameExtension(filename) {
             return fileNameAsAnArray[0];
         }
 
-        const fileNameWithoutExtension = fileNameAsAnArray.slice(0, -1).join("."); // -1 being the last element,
-        // therefore, remove the last element but join everything else (in the case of filename.x.js)
+        const fileNameWithoutExtension = fileNameAsAnArray.slice(0, -1).join(".");
+        // -1 being the last element, therefore, remove the last element but join 
+        // everything else (in the case of filename.x.js)
         return fileNameWithoutExtension;
     } else {
         return "";
@@ -107,8 +115,8 @@ function removeFileNameExtension(filename) {
 /** Extracts the path from the passed URL & returns it
  * @param {String} url - the URL to extract the path from
  * @returns {String} the path of the passed URL, whether or not it contains a protocol,
- *  a port and/or query parameters. An empty string is returned if the URL contains no path
- *  or if it contains whitespace only.
+ *  a port and/or query parameters. An empty string is returned if the URL contains
+ *  no path or if it contains whitespace only.
  */
 function extractPathFromURL(url) {
 
@@ -130,8 +138,9 @@ function extractPathFromURL(url) {
 
         // 2. Recreate url with path only and possible query parameters
         // 2.1. Join the list
-        path = urlBrokenDownIntoListByBackslash.join("/"); // if list is empty, it will return empty string
-        // and if list contains one element, it will return a string of that element
+        path = urlBrokenDownIntoListByBackslash.join("/"); // if list is empty, 
+        // it will return empty string and if list contains one element,
+        // it will return a string of that element
 
         // 2.2. Remove query params (so ? and beyond) if any
         path = path.split("?")[0]; // If separator is not found or is omitted,
@@ -161,7 +170,8 @@ function isIncludedInString(string1, string2) {
 /** Determines whether a list of strings contain a particular string
  * @param {Array} list - the list to search in
  * @param {String} value - the value to search for in list
- * @returns {Boolean} true if the passed list contains the string value and false otherwise
+ * @returns {Boolean} true if the passed list contains the string value and
+ *  false otherwise
  */
 function isIncludedInStringList(list, value) {
     // Note: cannot use built in array function "includes" as its not supported by IE
@@ -189,7 +199,8 @@ function hasAnArabicCharacter(text) {
     // -: defines a range (period)
     // \u: Matches the character with the Unicode value hhhh (hexadecimal digits)
 
-    // Return whether at least one of the text string's characters match the regular expression
+    // Return whether at least one of the text string's characters match the 
+    // regular expression
     return arabicCharUnicodeRange.test(text);
 }
 
@@ -203,22 +214,28 @@ function getHttpsVersionOfURL(url) {
     if (!this.isWhiteSpaceOnly(url)) {
         url = url.toLowerCase();
 
-        // CASE 1: If the url doesn't have a protocol or have a different protocol than HTTP/HTTPS
-        if (!isIncludedInString(url, "http")) { // Note: not  using the built in function includes() as it's not supported in IE
+        // CASE 1: If the url doesn't have a protocol or have a different protocol 
+        // than HTTP/HTTPS
+        if (!isIncludedInString(url, "http")) { // Note: not  using the built
+            // in function includes() as it's not supported in IE
             return url;
         }
         // CASE 2: If the protocol contains an HTTP/HTTPS protocol
-        return this.isPrefix(url, "https") ? url : url.replace("http", "https"); // replace replace first occurance only
+        return this.isPrefix(url, "https") ? url : url.replace("http", "https");
+        // replace replace first occurance only
     } else {
         return "";
     }
 }
 
-/** Returns a concatenated string, of the passed list of strings, separated by the passed symbol
+/** Returns a concatenated string, of the passed list of strings, separated by
+ *  the passed symbol
  * @param {Array} listOfStrings - a list of strings to concat
  * @param {String} seperatorSymbol - the symbol to use as a seperator i.e. ", "
- * @returns {String} a string of all strings in the list concatinated and seperated by the passed symbol
- * in the format "string 1(symbol)string 2(symbol)...(symbol)string n". If list is empty, an empty string is returned.
+ * @returns {String} a string of all strings in the list concatinated and seperated
+ * by the passed symbol in the format 
+ * "string 1(symbol)string 2(symbol)...(symbol)string n". If list is empty, 
+ * an empty string is returned.
  */
 function concatListAndSeparateBySymbol(listOfStrings, seperatorSymbol) {
     let concatinatedString = "";
@@ -229,7 +246,8 @@ function concatListAndSeparateBySymbol(listOfStrings, seperatorSymbol) {
         if (i === 0) {
             concatinatedString = concatinatedString.concat(listOfStrings[i]);
         } else { // if its not the first string, prefix it with the passed symbol
-            concatinatedString = concatinatedString.concat(seperatorSymbol.concat(listOfStrings[i]));
+            concatinatedString = concatinatedString
+                .concat(seperatorSymbol.concat(listOfStrings[i]));
         }
     }
 
@@ -267,11 +285,12 @@ function escapeSpecialCharactersOfRegExpInAString(regExpString) {
     []: matches any one of the characters in the brackets
     |: OR
     */
-    return regExpString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+    return regExpString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // $& means the whole matched string
 }
 
-/** Replaces white spaces, new lines, invalid URL characters and the symbols "'<>&[!@#$%^*(),?":{}|<>]
- *  with an underscore"
+/** Replaces white spaces, new lines, the symbols "'<>&[!@#$%^*(),?":{}|<>] and
+ *  invalid URL characters with an underscore
  * @param {String} text - the string to handle
  * @returns {String} Returns the string after replacing the special
  * characters with underscore
@@ -282,8 +301,10 @@ function replaceSpecialCharactersWithUnderscore(text) {
 
     return this
         .replaceNonValidURLCharsWithSymbol(text, symbol) // replace non valid URL chars
-        .replace(/[\s\n'"<>&\!\@#\$%\^\*\|\(\)\,\?\:\{\}\[\]]/g, symbol); // Replace additional special characters with
-    // an underscore as well (if they still exist after URL): white space, new line, "'<>&[!@#$%^*(),?":{}|<>]
+        .replace(/[\s\n'"<>&\!\@#\$%\^\*\|\(\)\,\?\:\{\}\[\]]/g, symbol);
+    // Replace additional special characters with an underscore 
+    // as well (if they still exist after URL): white space, new line,
+    // "'<>&[!@#$%^*(),?":{}|<>]
 
     /* Note special characters in regular expressions has to be escaped them with
      *  a \ to indicate I wanted a literal character. */
@@ -296,11 +317,13 @@ function replaceSpecialCharactersWithUnderscore(text) {
  * URL characters with the passed symbol
  */
 function replaceNonValidURLCharsWithSymbol(text, symbol) {
+    // None valid char list is anything that is not from the following list:
+    // ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?
+    // #[]@!$&'()*+,;=
 
     // Replace any non-valid URL character with an underscore
     return text.replace(/[^a-zA-Z0-9-\._~\:\/\?#\[\]\@\!\$\&'\(\)\*\+\,\;\=]/g, symbol);
 
-    // ^ in a char set: A negated or complemented character set. That is, it matches anything that is not enclosed in the brackets
-    // None valid char list is anything that is not from the following list:
-    // ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=
+    // ^ in a char set: A negated or complemented character set. That is, it matches
+    // anything that is not enclosed in the brackets
 }
